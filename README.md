@@ -159,9 +159,9 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 📞 Support
 
 If you have any questions or need support, please contact us at:
-- Email: hello@tanked.com
-- Website: www.tanked.com
+- Email: hello@tanked.com   --demo
+- Website: www.tanked.com   --demo
 
 ---
 
-Built with ❤️ by the Tanked team
+Built with ❤️ by the Shekhar Maurya
