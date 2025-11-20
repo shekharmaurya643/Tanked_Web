@@ -1,0 +1,211 @@
+/* .wave {
+  position: absolute;
+  bottom: 0;
+  width: 200%;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 100%;
+  left: -50%;
+  animation: wave 6s infinite linear;
+}
+
+.wave1 {
+  animation-delay: 0s;
+  opacity: 0.6;
+  bottom: 0;
+}
+
+.wave2 {
+  animation-delay: -2s;
+  opacity: 0.4;
+  bottom: 10px;
+}
+
+.wave3 {
+  animation-delay: -4s;
+  opacity: 0.2;
+  bottom: 20px;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(-25%) translateY(-10px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+} */
+
+
+
+
+/* WaterLoader.css - ADD THIS NEW CSS */
+
+/* ... (Keep your existing CSS for waves and text) ... */
+
+
+/* Main Loader Container */
+.water-loader-container {
+  @apply fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-blue-900 to-cyan-600 overflow-hidden z-[1000]; /* Tailwind for full screen, dark blue gradient */
+  pointer-events: all; /* Allow interactions if needed, or 'none' to click through */
+}
+
+/* Loading Text */
+.loading-text {
+  @apply text-white text-3xl font-bold relative z-10; /* Tailwind for styling */
+  animation: pulse-fade 2s infinite ease-in-out, text-float 6s ease-in-out infinite;
+}
+
+/* ------------------------------------- */
+/* WATER DROPS EFFECT */
+/* We create multiple droplets using ::before and ::after pseudo-elements
+   and then generate many more using box-shadow for performance and randomness. */
+/* ------------------------------------- */
+
+.droplets-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allows clicking through the droplets */
+  z-index: 5; /* Below text, above waves */
+}
+
+.droplets-effect::before,
+.droplets-effect::after {
+  content: '';
+  position: absolute;
+  width: 8px; /* Base size for the droplet head */
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(200, 220, 255, 0.7); /* Light blue droplet color */
+  
+  /* Create the teardrop/oval shape with a linear gradient tail */
+  /* The filter blur helps soften the edges */
+  filter: blur(1px);
+  
+  /* Generating multiple droplets with box-shadow */
+  /* Each entry: x-offset y-offset blur-radius spread-radius color */
+  box-shadow: 
+    /* First set of droplets (closer, slightly larger) */
+    10vw -10vh 0 0 rgba(200, 220, 255, 0.6),
+    -20vw 5vh 0 0 rgba(200, 220, 255, 0.6),
+    30vw 20vh 0 0 rgba(200, 220, 255, 0.6),
+    -40vw 35vh 0 0 rgba(200, 220, 255, 0.6),
+    50vw 50vh 0 0 rgba(200, 220, 255, 0.6),
+    -60vw 65vh 0 0 rgba(200, 220, 255, 0.6),
+    70vw 80vh 0 0 rgba(200, 220, 255, 0.6),
+    -80vw 95vh 0 0 rgba(200, 220, 255, 0.6),
+    
+    /* Second set of droplets (further, slightly smaller/fainter) */
+    15vw -25vh 0 0 rgba(200, 220, 255, 0.4),
+    -25vw -5vh 0 0 rgba(200, 220, 255, 0.4),
+    35vw 10vh 0 0 rgba(200, 220, 255, 0.4),
+    -45vw 25vh 0 0 rgba(200, 220, 255, 0.4),
+    55vw 40vh 0 0 rgba(200, 220, 255, 0.4),
+    -65vw 55vh 0 0 rgba(200, 220, 255, 0.4),
+    75vw 70vh 0 0 rgba(200, 220, 255, 0.4),
+    -85vw 85vh 0 0 rgba(200, 220, 255, 0.4);
+
+  animation: droplet-fall 4s linear infinite; /* Animation to fall */
+}
+
+/* ::after will create a second layer of droplets with different timing */
+.droplets-effect::after {
+  animation-delay: -2s; /* Start this layer halfway through */
+  animation-duration: 5s; /* Slightly different speed */
+  transform: scale(0.7); /* Smaller for depth */
+  filter: blur(1px); /* More blur for distance */
+  background: rgba(200, 220, 255, 0.3); /* Fainter */
+}
+
+/* ------------------------------------- */
+/* WAVES EFFECT (from previous iteration, slightly refined) */
+/* ------------------------------------- */
+
+.wave {
+  position: absolute;
+  left: 0;
+  width: 200%; /* Wider than screen for seamless scroll */
+  height: 200px;
+  background-repeat: repeat-x;
+  background-position: 0 bottom;
+  transform-origin: center bottom;
+  animation: fill 4s ease-out forwards, animate 10s linear infinite;
+  opacity: 0.8; /* Slightly more opaque */
+}
+
+.wave1 {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 120" preserveAspectRatio="none"><path d="M 0 60 C 250 0 250 120 500 60 C 750 0 750 120 1000 60 L 1000 120 L 0 120 Z" fill="rgba(34, 197, 222, 0.7)"></path></svg>');
+  background-size: 1000px 120px;
+  animation-duration: 10s;
+  z-index: 4;
+}
+.wave2 {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 120" preserveAspectRatio="none"><path d="M 0 60 C 200 120 350 0 500 60 C 650 120 800 0 1000 60 L 1000 120 L 0 120 Z" fill="rgba(34, 197, 222, 0.5)"></path></svg>');
+  background-size: 1000px 100px;
+  animation-duration: 12s;
+  z-index: 3;
+}
+.wave3 {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 120" preserveAspectRatio="none"><path d="M 0 60 C 150 0 350 120 500 60 C 650 0 850 120 1000 60 L 1000 120 L 0 120 Z" fill="rgba(34, 197, 222, 0.3)"></path></svg>');
+  background-size: 1000px 80px;
+  animation-duration: 15s;
+  z-index: 2;
+}
+.wave4 {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 120" preserveAspectRatio="none"><path d="M 0 60 C 100 120 250 0 500 60 C 750 120 900 0 1000 60 L 1000 120 L 0 120 Z" fill="rgba(34, 197, 222, 0.1)"></path></svg>');
+  background-size: 1000px 60px;
+  animation-duration: 18s;
+  z-index: 1;
+}
+
+/* ------------------------------------- */
+/* KEYFRAME ANIMATIONS */
+/* ------------------------------------- */
+
+/* Text fade and pulse */
+@keyframes pulse-fade {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Text floating (bobbing) */
+@keyframes text-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Water Droplet Falling Animation */
+@keyframes droplet-fall {
+  0% {
+    transform: translateY(-120vh); /* Start far above the viewport */
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(120vh); /* Fall far below the viewport */
+    opacity: 0;
+  }
+}
+
+/* Wave fill-up animation */
+@keyframes fill {
+  0% { transform: translateY(100vh); } /* Start completely off-screen bottom */
+  100% { transform: translateY(calc(50vh - 100px)); } /* Rise to middle */
+}
+
+/* Wave horizontal movement animation */
+@keyframes animate {
+  0% { background-position-x: 0; }
+  100% { background-position-x: 1000px; } /* Seamlessly loop the SVG background */
+}
