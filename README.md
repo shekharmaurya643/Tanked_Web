@@ -1,6 +1,6 @@
 # Tanked - Company Website
 
-A modern, interactive, and attractive company website built with React.js and Tailwind CSS.
+“Tanked is a modern, responsive, and animation-rich company website built with React.js and TailwindCSS, designed for clean presentation and professional branding.”
 
 ## 🚀 Features
 
@@ -115,29 +115,6 @@ The website is fully responsive and includes:
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint (if configured)
 
-## 🌟 Key Features
-
-### Hero Section
-- Animated text rotation
-- Call-to-action buttons
-- Company statistics
-- Smooth scroll indicator
-
-### Services Section
-- Interactive service cards
-- Hover effects and animations
-- Feature lists for each service
-
-### Testimonials
-- Auto-rotating carousel
-- Client feedback with ratings
-- Navigation controls
-
-### Contact Form
-- Form validation
-- Loading states
-- Company contact information
-- Social media links
 
 ## 🚀 Deployment
 
@@ -159,9 +136,9 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 📞 Support
 
 If you have any questions or need support, please contact us at:
-- Email: hello@tanked.com   --demo
-- Website: www.tanked.com   --demo
+- Email: hello@tanked.com   (demo)
+- Website: www.tanked.com   (demo)
 
 ---
 
-Built with ❤️ by the Shekhar Maurya
+Built with ❤️ by Shekhar Maurya
